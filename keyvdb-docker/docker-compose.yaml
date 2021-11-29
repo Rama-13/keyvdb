@@ -1,0 +1,25 @@
+version: "3"  
+services:  
+ prometheus:
+      image: prom/prometheus:latest
+      ports:
+      - 9090:9090
+      volumes:
+       - "./prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml"
+ app:
+    container_name: keyvdb
+    build: ./
+    ports:
+    - 7000:7000
+    volumes:
+    - "./keyvdb.py:/keyvdb.py"
+
+ grafana:
+    image: grafana/grafana:5.1.0
+    volumes:
+      - ./grafana/config.ini:/etc/grafana/grafana.ini
+      - ./grafana/datasource.yaml:/etc/grafana/provisioning/datasources/default.yaml
+      - ./grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/default.yaml
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    ports:
+      - 3000:3000

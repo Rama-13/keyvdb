@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keyvdb-deployment
+  labels:
+    app: keyvdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keyvdb
+  template:
+    metadata:
+      labels:
+        app: keyvdb
+    spec:
+      containers:
+      - name: keyvdb
+        image: kodrama/keyvdb-async:latency_metrics
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7000
+

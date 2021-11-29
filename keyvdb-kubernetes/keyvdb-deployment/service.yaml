@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: keyvdb-service
+  namespace: default
+  labels:
+    app: keyvdb
+spec:
+  type: ClusterIP
+  selector:
+    app: keyvdb
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 7000

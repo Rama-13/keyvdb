@@ -1,0 +1,30 @@
+global:
+  scrape_interval:  25s
+  scrape_timeout: 20s
+
+  external_labels:
+      monitor: 'keyvdb'
+
+rule_files:
+
+scrape_configs:
+  - job_name: 'prometheus'
+
+    static_configs:
+      - targets: ['localhost:9090']
+  
+  - job_name: 'keyvdb-export'
+    static_configs:
+      - targets: ['keyvdb:7000']
+
+  - job_name: 'grafana'
+    static_configs:
+      - targets: ['grafana:3000']
+
+  # - job_name: 'keyvdb-metrics-export'
+
+  #   dns_sd_configs:
+  #     - names: ['192.168.0.209']
+  #       port: 7000
+  #       type: A
+  #       refresh_interval: 5s
