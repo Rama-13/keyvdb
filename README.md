@@ -57,3 +57,6 @@ TO RUN THE DOCKER DEPLOYMENT:<br>
   <br>
   For the grafana endpoint to be accessible, use ```minikube service <grafana-service-name> --url -n monitoring```<br>
 
+
+  Sample Grafana Dashboard from my Minikube Deployment: <br>
+![Grafana Dashboard](https://github.com/Rama-13/keyvdb/blob/222b6ae295b336f838ea799cd4da9a6998138e70/grafana-dashboard.png)
